@@ -59,3 +59,7 @@ class SandwichMachine:
            Hint: no output"""
 
 ### Make an instance of SandwichMachine class and write the rest of the codes ###
+
+### Takes user input with prompt ###
+prompt = input("What would you like? (small/ medium/ large/ off/ report): ")
+print(prompt)
