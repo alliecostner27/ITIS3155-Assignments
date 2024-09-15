@@ -45,40 +45,46 @@ class SandwichMachine:
     def check_resources(self, ingredients):
         """Returns True when order can be made, False if ingredients are insufficient."""
         for item in ingredients:
-            if ingredients[item] > self.machine_resources.get[item, 0]:
-                print(f"Sorry there is not enough {item}.")
+            if ingredients[item] > self.machine_resources.get(item, 0):
+                print(f"Sorry, there is not enough {item}.")
                 return False
-            return True
+        return True
+        
 
     def process_coins(self):
         """Returns the total calculated from coins inserted.
-           Hint: include input() function here, e.g. input("how many quarters?: ")""" 
+           Hint: include input() function here, e.g. input("how many quarters?: ")"""
         print("Please insert coins.")
-        quarters = int(input("how many quarters?: "))* 0.25
-        dimes = int(input("how many dimes?: "))* 0.10
-        nickles = int(input("how many nickles?: "))* 0.05
-        pennies = int(input("how many pennies?: "))* 0.01
-        total = quarters + dimes + nickles + pennies
+        large_dollars = int(input("how many large dollars?: "))
+        half_dollars = int(input("how many half dollars?: "))
+        quarters = int(input("how many quarters?: "))
+        nickels = int(input("how many nickels?: "))
+        total = (large_dollars * 1) + (half_dollars * 0.5) + (quarters * 0.25) + (nickels * 0.05)
         return total
-           
-
+ 
     def transaction_result(self, coins, cost):
         """Return True when the payment is accepted, or False if money is insufficient.
-           Hint: use the output of process_coins() function for cost input"""  
-        total_inserted = self.process_coins()
-        if total_inserted >= cost:
-            change = round(total_inserted - cost, 2)
-            print(f"Here is ${change} in change.")
+           Hint: use the output of process_coins() function for cost input""" 
+        if coins >= cost:
+            change = round(coins - cost, 2)
+            if change > 0:
+                print(f"Here is ${change} in change.")
             return True
         else:
             print("Sorry, that's not enough money. Money refunded.")
-            return False
+            return False 
+        
 
     def make_sandwich(self, sandwich_size, order_ingredients):
         """Deduct the required ingredients from the resources.
            Hint: no output"""
+        for item in order_ingredients:
+            self.machine_resources[item] -= order_ingredients[item]
+        print(f"{sandwich_size} sandwich is ready. Bon appetit!")
+        
 
 ### Make an instance of SandwichMachine class and write the rest of the codes ###
 
+
 ### Takes user input with prompt ###
-prompt = input("What would you like? (small/ medium/ large/ off/ report): ")
+
