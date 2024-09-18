@@ -1,3 +1,6 @@
+from checkingAccount import checkingAccount
+from savingsAccount import savingsAccount
+
 class bankAccount:
     bankName = "Wells Fargo"
    
@@ -7,11 +10,9 @@ class bankAccount:
         self.balance = customer_balance
         self.minBalance = minimum_Balance
     
-    # Method to display welcome message
     def welcome_message(self):
         print("Hi " +  self.name + ", welcome to " + self.bankName)
         
-    # Method to display customer information, including bank name  
     def customerInfo(self):
         return "Customer Name: " + self.name + " Balance: " + str(self.balance) + " Minimum Balance: " + str(self.minBalance) + " Bank Name: " + self.bankName
         
@@ -23,16 +24,18 @@ class bankAccount:
         else:
             return("Insufficient funds")
     
-    
     def deposit(self, depositAmount):
         depositAmount = float(input("Enter the amount you want to deposit: "))
         self.balance += depositAmount
         return "Deposit successful. Your new balance is: " + str(self.balance)
-        
+    
 #Creating instance of bankAccount
 customer1 = bankAccount("John", 1000, 100)
 customer2 = bankAccount("Jane", 2000, 100)
+customer3 = checkingAccount("Jack", 3000, 100)
 
+print(customer3.transferLimit(0))
+"""
 print(customer1.welcome_message())
 print(customer1.customerInfo())
 print(customer1.withdraw(0))
@@ -43,3 +46,4 @@ print(customer2.customerInfo())
 print(customer2.withdraw(0))
 print(customer2.deposit(0))
 
+"""
