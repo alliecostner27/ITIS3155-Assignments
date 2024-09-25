@@ -8,4 +8,4 @@ class checkingAccount(bankAccount):
             self.balance -= transferAmount
             return "Transfer successful. Your new balance is: " + str(self.balance)
         else:
-            return "Transfer limit exceeded" 
+            return "Transfer limit exceeded"
